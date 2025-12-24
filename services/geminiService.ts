@@ -4,7 +4,7 @@ import { ChatMessage } from "../types";
 export class GeminiService {
   private ai: GoogleGenAI;
   // أداة خرائط جوجل مدعومة فقط في سلسلة موديلات Gemini 2.5 حالياً
-  private modelName = 'gemini-2.5-flash';
+  private modelName = 'gemini-1.5-flash';
 
   constructor() {
     // دمج مفتاح خرائط جوجل إذا توفر لضمان عمل الأداة بشكل صحيح، وإلا استخدام المفتاح الافتراضي
