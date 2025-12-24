@@ -9,7 +9,7 @@ export class GeminiService {
   constructor() {
     // دمج مفتاح خرائط جوجل إذا توفر لضمان عمل الأداة بشكل صحيح، وإلا استخدام المفتاح الافتراضي
     const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
-    this.ai = new GoogleGenAI({ apiKey });
+    this.ai = new GoogleGenerativeAI(apiKey);
   }
 
   async askAboutClimate(question: string, history: ChatMessage[]): Promise<{ text: string, urls?: {title: string, uri: string}[] }> {
