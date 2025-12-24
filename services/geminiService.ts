@@ -35,23 +35,20 @@ export class GeminiService {
 
       // إنشاء مثيل جديد لضمان استخدام أحدث مفتاح API مع أولوية لمفتاح الخرائط إذا وجد
       
-      const aiClient = new GoogleGenAI({ apiKey: 'AIzaSyAsgSfEP4XROs2GrAGPkiZ3O7OdximxKXA' });
-      const response = await aiClient.models.generateContent({
-        model: this.modelName,
-        contents: [
-          ...history.map(m => ({
-            role: m.role,
-            parts: [{ text: m.text }]
-          })),
-          { role: 'user', parts: [{ text: question }] }
-        ],
-        config: {
-          systemInstruction: systemInstruction,
-          tools: [{ googleMaps: {} }],
-          temperature: 0.7,
-        }
-      });
+      const model = this.ai.getGenerativeModel({
+      model: 'gemini-1.5-flash',
+      systemInstruction: systemInstruction
+    });
 
+    const chat = model.startChat({
+      history: history.map(m => ({
+        role: m.role === 'user' ? 'user' : 'model',
+        parts: [{ text: m.text }]
+      }))
+    });
+
+    const result = await chat.sendMessage(question);
+    const response = { text: result.response.text() };
       let text = response.text || "عذراً، لم أستطع صياغة إجابة حالياً.";
       
       // إضافة العبارة الترحيبية فقط في بداية المحادثة (عندما يكون السجل فارغاً)
