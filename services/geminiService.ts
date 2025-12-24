@@ -34,9 +34,8 @@ export class GeminiService {
       `;
 
       // إنشاء مثيل جديد لضمان استخدام أحدث مفتاح API مع أولوية لمفتاح الخرائط إذا وجد
-      const apiKey = process.env.GOOGLE_MAPS_API_KEY || process.env.API_KEY;
-      const aiClient = new GoogleGenAI({ apiKey });
       
+      const aiClient = new GoogleGenAI({ apiKey: 'AIzaSyAsgSfEP4XROs2GrAGPkiZ3O7OdximxKXA' });
       const response = await aiClient.models.generateContent({
         model: this.modelName,
         contents: [
