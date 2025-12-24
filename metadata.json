@@ -1,0 +1,7 @@
+{
+  "name": "Climate Justice Hub - Dr. Marwa Hussein",
+  "description": "An interactive educational platform for students of education faculties focusing on climate justice, sustainable development, and global citizenship, featuring an AI-powered assistant.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
