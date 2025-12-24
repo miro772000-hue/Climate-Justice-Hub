@@ -8,7 +8,7 @@ export class GeminiService {
 
   constructor() {
     // دمج مفتاح خرائط جوجل إذا توفر لضمان عمل الأداة بشكل صحيح، وإلا استخدام المفتاح الافتراضي
-    const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+   const apiKey = 'AIzaSyAsgSfEP4XROs2GrAGPkiZ3O7OdximxKXA';
     this.ai = new GoogleGenerativeAI(apiKey);
   }
 
